@@ -26,8 +26,8 @@ interface ImageData {
   if (!imageData) return <div>Loading...</div>;
 
   return (
-    <body>
-  <div className="bg-gray-900 text-white min-h-screen">
+    <body >
+  <div className=" text-white min-h-screen">
     <div className="container mx-auto pt-8 px-4 sm:px-6 lg:px-8">
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4">

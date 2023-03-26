@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import jwt from 'jsonwebtoken';
 import DashBoard from '@/components/DashBoard';
 
 
@@ -42,11 +41,11 @@ export default function Index() {
   }
 
   return (   
-        <div  className="bg-gray-900 p-3  text-white min-h-screen" >
-
-        <button onClick={handleLogout}>Logout</button>
-        <DashBoard />
-       
-        </div>
+    <div  className="min-h-screen bg-cover bg-center text-white"style={{ backgroundImage: "url('1.jpg')" }} >
+      <div className='font-bold p-3'>
+          <button onClick={handleLogout}>Logout</button>
+      </div>
+      <DashBoard />
+    </div>
   )  
 };
