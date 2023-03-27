@@ -26,7 +26,6 @@ interface ImageData {
   if (!imageData) return <div>Loading...</div>;
 
   return (
-    <body >
   <div className=" text-white min-h-screen">
     <div className="container mx-auto pt-8 px-4 sm:px-6 lg:px-8">
       <div className="text-center">
@@ -49,7 +48,7 @@ interface ImageData {
       </div>
     </div>
   </div>
-</body>
+
 
 
   );

@@ -9,11 +9,22 @@ export default function Index() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
+    //Receiving token from google OAuth through params
+    console.log(router.query)
+    const {token, _} = router.query;
+    console.log(token);
+    if(token) {
+      localStorage.setItem('token', token as string);
+    } else {
+      console.log("No token from Google.");
+    }
+    //Get token from localStorage
+    const localToken = localStorage.getItem('token');
+    if (localToken) {
+      console.log("Token found! ");
       fetch('http://localhost:5000/verify', {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${localToken}`,
         },
       })
         .then((res) => {
@@ -29,11 +40,9 @@ export default function Index() {
           localStorage.removeItem('token');
           router.push('/login');
         });
-    } else {
-      router.push('/login');
     }
   }, []);
-  
+ 
 
   function handleLogout() {
     localStorage.removeItem('token');
@@ -47,5 +56,7 @@ export default function Index() {
       </div>
       <DashBoard />
     </div>
-  )  
+  ) 
+
+   
 };
