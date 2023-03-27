@@ -8,40 +8,33 @@ export default function LoginForm() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const router = useRouter();
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-
+  
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  
     try {
       const response = await axios.post('http://localhost:5000/login', {
-        email,
-        password,
+        email: email,
+        password: password
       });
-
-      console.log(response);
-
-      const { token } = response.data;
-
-      localStorage.setItem('token', token);
-
-      router.push('/');
-    } catch (error) {
-      console.error(error);
+  
+      // Store JWT token in localStorage
+      localStorage.setItem('token', response.data.token);
+      router.push("/")
+  
+      // Alert user of successful login
+    } catch (error:any) {
+      // Alert user of error
+      alert(error.response.data.message);
     }
   };
+  
+  
 
 
 
   const handleGoogleSign = () => {
     router.push("http://localhost:5000/auth/google");
-    //   const { token, email } = router.query;
-    // if (token && email) {
-    //   localStorage.setItem("token", token as string);
-    //   localStorage.setItem("email", email as string);
-    //   router.push("/");
-    // } else {
-    //   router.push("/login");
-    // }
   };
 
 
