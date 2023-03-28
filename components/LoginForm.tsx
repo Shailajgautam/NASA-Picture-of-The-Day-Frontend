@@ -13,7 +13,7 @@ export default function LoginForm() {
     event.preventDefault();
   
     try {
-      const response = await axios.post('http://localhost:5000/login', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
         email: email,
         password: password
       });
@@ -34,7 +34,7 @@ export default function LoginForm() {
 
 
   const handleGoogleSign = () => {
-    router.push("http://localhost:5000/auth/google");
+    router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`);
   };
 
 

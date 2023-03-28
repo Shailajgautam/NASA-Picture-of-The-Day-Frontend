@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect,  useState } from 'react';
 import { useRouter } from 'next/router';
 import DashBoard from '@/components/DashBoard';
 
@@ -9,8 +9,7 @@ export default function Index() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-
-    //Receiving token from google OAuth through params
+   //Receiving token from google OAuth through params
     console.log(router.query)
     const { token, _ } = router.query;
     console.log(token);
@@ -21,7 +20,7 @@ export default function Index() {
     //Get token from localStorage
     const localToken = localStorage.getItem('token');
     if (localToken) {
-      fetch('http://localhost:5000/verify', {
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/verify`, {
         headers: {
           Authorization: `Bearer ${localToken}`,
         },
@@ -48,8 +47,9 @@ export default function Index() {
     localStorage.removeItem('token');
     router.push('/login');
   }
-
-  return (
+  
+  
+  return  (
     <div className="min-h-screen bg-cover bg-center text-white" style={{ backgroundImage: "url('1.jpg')" }} >
       <div className='font-bold p-3'>
         <button onClick={handleLogout}>Logout</button>

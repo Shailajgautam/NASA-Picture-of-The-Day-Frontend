@@ -12,7 +12,7 @@ export default function SignupForm() {
     e.preventDefault();
 
     try {
-      axios.post("http://localhost:5000/signup", { email, password })
+      axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/signup`, { email, password })
         .then(res => {
           alert(res.data.message)
           router.push("/login")
