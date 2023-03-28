@@ -44,12 +44,10 @@ export default function SignupForm() {
               Signup
             </button>
           </div>
-          <div className="flex items-center justify-center mt-4">
-            <span className="border-b border-gray-600 text-white font-bold text-sm leading-5 px-4">OR</span>
-          </div>
-          <div className='flex text-center'>
-            <Link href='/login' type="submit" className="w-full bg-blue-500 hover:bg-blue-800 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline">
-              Login
+         
+          <div className=" flex text-right">
+            <p className='text-m text-white'>Already have an account?</p>
+            <Link href="/login" passHref className="text-m text-white pl-1 font-bold hover:text-gray-400"> Login
             </Link>
           </div>
         </form>
