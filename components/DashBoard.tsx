@@ -18,7 +18,6 @@ const DashBoard: React.FC = () => {
         }
       });
       setImageData(response.data);
-      console.log(response.data)
     };
     fetchImageData();
   }, []);

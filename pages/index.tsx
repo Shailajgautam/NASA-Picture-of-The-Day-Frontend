@@ -9,19 +9,18 @@ export default function Index() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
+
     //Receiving token from google OAuth through params
     console.log(router.query)
     const { token, _ } = router.query;
     console.log(token);
     if (token) {
       localStorage.setItem('token', token as string);
-    } else {
-      console.log("No token from Google.");
-    }
+    } 
+
     //Get token from localStorage
     const localToken = localStorage.getItem('token');
     if (localToken) {
-      console.log("Token found! ");
       fetch('http://localhost:5000/verify', {
         headers: {
           Authorization: `Bearer ${localToken}`,
